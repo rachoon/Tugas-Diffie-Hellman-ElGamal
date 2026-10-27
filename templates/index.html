@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureChat — Alice & Bob</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Secure<span>Chat</span></h1>
+      <p>DIFFIE–HELLMAN & ELGAMAL</p>
+    </div>
+
+    <div class="topbar-right">
+      <span class="status-dot"></span>
+      <span>Simulasi lokal</span>
+      <button id="resetBtn" class="button button-ghost" type="button">
+        Reset simulasi
+      </button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <div class="intro-title">
+        <p class="eyebrow">EDUKASI KRIPTOGRAFI</p>
+        <h2>Secure messaging<span>.</span></h2>
+      </div>
+
+      <div class="flow">
+        <span class="tag">Simulasi konsep</span>
+
+        <div class="flow-step">
+          <b>01</b>
+          <span>Diffie–Hellman</span>
+          <small>Berbagi rahasia</small>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-step">
+          <b>02</b>
+          <span>ElGamal</span>
+          <small>Enkripsi pesan</small>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-step">
+          <b>03</b>
+          <span>Ciphertext</span>
+          <small>Dekripsi manual</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-grid">
+      <!-- ROOM CHAT ALICE -->
+      <article class="chat-card" id="aliceCard">
+        <div class="chat-header alice-header">
+          <div class="avatar avatar-alice">A</div>
+
+          <div class="person">
+            <h3>Alice</h3>
+          </div>
+
+          <span class="online-pill">Online</span>
+        </div>
+
+        <div class="chat-body" id="aliceView">
+          <div class="chat-meta">
+            ROOM CHAT ALICE <span>•</span> End-to-end demo
+          </div>
+
+          <div class="messages" id="aliceMessages"></div>
+
+          <form class="composer" id="aliceForm">
+            <input
+              id="aliceInput"
+              type="text"
+              maxlength="500"
+              placeholder="Tulis pesan untuk Bob..."
+              autocomplete="off"
+              required
+            >
+            <button
+              class="send-button"
+              type="submit"
+              aria-label="Kirim pesan Alice ke Bob"
+            >↑</button>
+          </form>
+
+          <p class="composer-hint">
+            Pesan dienkripsi menggunakan kunci publik Bob.
+          </p>
+        </div>
+
+        <div class="detail-view hidden" id="aliceDetail"></div>
+      </article>
+
+      <!-- ROOM CHAT BOB -->
+      <article class="chat-card" id="bobCard">
+        <div class="chat-header bob-header">
+          <div class="avatar avatar-bob">B</div>
+
+          <div class="person">
+            <h3>Bob</h3>
+          </div>
+
+          <span class="online-pill">Online</span>
+        </div>
+
+        <div class="chat-body" id="bobView">
+          <div class="chat-meta">
+            ROOM CHAT BOB <span>•</span> End-to-end demo
+          </div>
+
+          <div class="messages" id="bobMessages"></div>
+
+          <form class="composer" id="bobForm">
+            <input
+              id="bobInput"
+              type="text"
+              maxlength="500"
+              placeholder="Tulis pesan untuk Alice..."
+              autocomplete="off"
+              required
+            >
+            <button
+              class="send-button"
+              type="submit"
+              aria-label="Kirim pesan Bob ke Alice"
+            >↑</button>
+          </form>
+
+          <p class="composer-hint">
+            Pesan dienkripsi menggunakan kunci publik Alice.
+          </p>
+        </div>
+
+        <div class="detail-view hidden" id="bobDetail"></div>
+      </article>
+    </section>
+
+    <!-- PANEL DIFFIE-HELLMAN -->
+    <section class="dh-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LANGKAH 01</p>
+          <h2>Diffie–Hellman key exchange</h2>
+        </div>
+        <span class="tag">Public parameters</span>
+      </div>
+
+      <p class="section-copy">
+        Alice dan Bob membentuk shared secret melalui pertukaran nilai publik.
+        Panel ini merupakan demonstrasi DH yang terpisah dari kunci ElGamal.
+      </p>
+
+      <div id="dhContent" class="dh-grid">
+        <p class="muted">Memuat perhitungan...</p>
+      </div>
+    </section>
+
+    <footer>
+      Educational demo · Not for real secret communications
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

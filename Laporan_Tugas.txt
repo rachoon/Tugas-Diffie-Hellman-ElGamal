@@ -1,0 +1,23 @@
+LAPORAN TUGAS KRIPTOGRAFI
+STUDI KASUS PENGIRIMAN PESAN RAHASIA ALICE & BOB (DIFFIE-HELLMAN & ELGAMAL)
+
+Kelompok X: 
+1. Tasya Aulia Darmawan (5027241009)
+2. Azaria Raissa Maulidinnisa (5027241043)
+3. Afriza Tristan Calendra Rajasa (5027241104)
+
+1. DESKRIPSI PROGRAM
+Aplikasi ini merupakan web app Flask murni yang mengimplementasikan satu rangkaian sistem keamanan komunikasi secara end-to-end tanpa menggunakan library kriptografi instan. 
+Sistem ini menjawab studi kasus pengiriman pesan rahasia "TRANSFER 500000" dari Alice ke Bob menggunakan algoritma Diffie-Hellman dan ElGamal.
+
+2. INTEGRASI SISTEM (ALUR KERJA)
+Keduanya dipadukan dalam satu rangkaian sistem:
+- Tahap 1 (Diffie-Hellman): Alice dan Bob menyepakati bilangan prima (p) dan generator (g). Keduanya membangkitkan Kunci Publik masing-masing menggunakan fungsi eksponensiasi modular buatan sendiri dan saling menukarkannya lewat jaringan publik.
+- Tahap 2 (ElGamal Enkripsi): Alice menggunakan Kunci Publik milik Bob (hasil dari pertukaran Diffie-Hellman) untuk mengenkripsi pesan teks "TRANSFER 500000". Pesan dipecah menjadi nilai ASCII (integer) lalu dienkripsi karakter demi karakter menjadi deretan pasangan ciphertext (a, b).
+- Tahap 3 (ElGamal Dekripsi): Bob menerima deretan ciphertext tersebut, lalu memulihkan pesan asli menggunakan Kunci Privat yang hanya dimilikinya. Persamaan dekripsi disederhanakan tanpa inversi menjadi M = b * a^(p-1-x) mod p.
+
+3. CARA MENJALANKAN APLIKASI (LOCAL ENVIRONMENT WIN/WSL)
+- Buka terminal / command prompt (rekomendasi menggunakan 'py' atau 'python3' di Windows, atau jalankan melalui WSL Ubuntu).
+- Instal dependensi: pip install Flask
+- Eksekusi program: python app.py
+- Buka browser: http://127.0.0.1:5000/
