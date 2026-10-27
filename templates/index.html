@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SecureChat — Alice & Bob</title>
+  <title>SecureChat — Asya &amp; Raissa</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
       <h1>Secure<span>Chat</span></h1>
-      <p>DIFFIE–HELLMAN & ELGAMAL</p>
+      <p>DIFFIE–HELLMAN &amp; ELGAMAL</p>
     </div>
 
     <div class="topbar-right">
@@ -24,140 +23,138 @@
   </header>
 
   <main class="page">
+    <!-- RINGKASAN ALUR: 3 tahap dalam satu studi kasus -->
     <section class="intro">
       <div class="intro-title">
-        <p class="eyebrow">EDUKASI KRIPTOGRAFI</p>
-        <h2>Secure messaging<span>.</span></h2>
+        <p class="eyebrow">STUDI KASUS PESAN RAHASIA</p>
+        <h2>Asya &amp; Raissa<span>.</span></h2>
       </div>
 
       <div class="flow">
-        <span class="tag">Simulasi konsep</span>
+        <span class="tag">Satu rangkaian sistem</span>
 
         <div class="flow-step">
           <b>01</b>
           <span>Diffie–Hellman</span>
-          <small>Berbagi rahasia</small>
+          <small>Sepakati p, g &amp; tukar kunci publik</small>
         </div>
 
         <div class="flow-arrow">→</div>
 
         <div class="flow-step">
           <b>02</b>
-          <span>ElGamal</span>
-          <small>Enkripsi pesan</small>
+          <span>ElGamal Enkripsi</span>
+          <small>Pakai kunci publik hasil DH</small>
         </div>
 
         <div class="flow-arrow">→</div>
 
         <div class="flow-step">
           <b>03</b>
-          <span>Ciphertext</span>
-          <small>Dekripsi manual</small>
+          <span>ElGamal Dekripsi</span>
+          <small>Pakai kunci privat penerima</small>
         </div>
       </div>
     </section>
 
     <section class="chat-grid">
-      <!-- ROOM CHAT ALICE -->
-      <article class="chat-card" id="aliceCard">
-        <div class="chat-header alice-header">
-          <div class="avatar avatar-alice">A</div>
-
+      <!-- RUANG CHAT ASYA-->
+      <article class="chat-card" id="asyaCard">
+        <div class="chat-header asya-header">
+          <div class="avatar avatar-asya">A</div>
           <div class="person">
-            <h3>Alice</h3>
+            <h3>Asya</h3>
           </div>
-
           <span class="online-pill">Online</span>
         </div>
 
-        <div class="chat-body" id="aliceView">
+        <div class="chat-body" id="asyaView">
           <div class="chat-meta">
-            ROOM CHAT ALICE <span>•</span> End-to-end demo
+            RUANG CHAT ASYA <span>•</span> End-to-end demo
           </div>
 
-          <div class="messages" id="aliceMessages"></div>
+          <div class="messages" id="asyaMessages"></div>
 
-          <form class="composer" id="aliceForm">
+          <form class="composer" id="asyaForm">
             <input
-              id="aliceInput"
+              id="asyaInput"
               type="text"
               maxlength="500"
-              placeholder="Tulis pesan untuk Bob..."
+              placeholder="Tulis pesan untuk Raissa..."
               autocomplete="off"
               required
             >
             <button
               class="send-button"
               type="submit"
-              aria-label="Kirim pesan Alice ke Bob"
+              aria-label="Kirim pesan Asya ke Raissa"
             >↑</button>
           </form>
 
           <p class="composer-hint">
-            Pesan dienkripsi menggunakan kunci publik Bob.
+            Pesan dienkripsi dengan kunci publik Raissa (B).
           </p>
         </div>
 
-        <div class="detail-view hidden" id="aliceDetail"></div>
+        <div class="detail-view hidden" id="asyaDetail"></div>
       </article>
 
-      <!-- ROOM CHAT BOB -->
-      <article class="chat-card" id="bobCard">
-        <div class="chat-header bob-header">
-          <div class="avatar avatar-bob">B</div>
-
+      <!-- RUANG CHAT RAISSA -->
+      <article class="chat-card" id="raissaCard">
+        <div class="chat-header raissa-header">
+          <div class="avatar avatar-raissa">R</div>
           <div class="person">
-            <h3>Bob</h3>
+            <h3>Raissa</h3>
           </div>
-
           <span class="online-pill">Online</span>
         </div>
 
-        <div class="chat-body" id="bobView">
+        <div class="chat-body" id="raissaView">
           <div class="chat-meta">
-            ROOM CHAT BOB <span>•</span> End-to-end demo
+            RUANG CHAT RAISSA <span>•</span> End-to-end demo
           </div>
 
-          <div class="messages" id="bobMessages"></div>
+          <div class="messages" id="raissaMessages"></div>
 
-          <form class="composer" id="bobForm">
+          <form class="composer" id="raissaForm">
             <input
-              id="bobInput"
+              id="raissaInput"
               type="text"
               maxlength="500"
-              placeholder="Tulis pesan untuk Alice..."
+              placeholder="Tulis pesan untuk Asya..."
               autocomplete="off"
               required
             >
             <button
               class="send-button"
               type="submit"
-              aria-label="Kirim pesan Bob ke Alice"
+              aria-label="Kirim pesan Raissa ke Asya"
             >↑</button>
           </form>
 
           <p class="composer-hint">
-            Pesan dienkripsi menggunakan kunci publik Alice.
+            Pesan dienkripsi dengan kunci publik Asya (A).
           </p>
         </div>
 
-        <div class="detail-view hidden" id="bobDetail"></div>
+        <div class="detail-view hidden" id="raissaDetail"></div>
       </article>
     </section>
 
-    <!-- PANEL DIFFIE-HELLMAN -->
+    <!-- PANEL DIFFIE-HELLMAN (diisi script.js dari /api/state) -->
     <section class="dh-card">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">LANGKAH 01</p>
+          <p class="eyebrow">TAHAP 01</p>
           <h2>Diffie–Hellman key exchange</h2>
         </div>
-        <span class="tag">Public parameters</span>
+        <span class="tag">Parameter publik</span>
       </div>
 
       <p class="section-copy">
-        Alice dan Bob membentuk shared secret melalui pertukaran nilai publik.
-        Panel ini merupakan demonstrasi DH yang terpisah dari kunci ElGamal.
+        Asya dan Raissa menyepakati p dan g, lalu bertukar nilai publik A dan B.
+        Nilai publik ini sekaligus menjadi kunci publik ElGamal (y = A untuk Asya,
+        y = B untuk Raissa), sehingga tahap 2 dan 3 memakai kunci hasil DH.
       </p>
 
       <div id="dhContent" class="dh-grid">
@@ -166,7 +163,7 @@
     </section>
 
     <footer>
-      Educational demo · Not for real secret communications
+      Demo edukasi · Bukan untuk komunikasi rahasia sungguhan
     </footer>
   </main>
 
