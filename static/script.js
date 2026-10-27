@@ -62,11 +62,11 @@ function renderDH() {
     <div class="dh-step"><h4>Parameter publik</h4>
       <div class="formula">p = ${d.p}<br>g = ${d.g}</div>
       <p>Nilai p dan g boleh diketahui oleh siapa pun.</p></div>
-    <div class="dh-step"><h4>Nilai publik Alice &amp; Bob</h4>
+    <div class="dh-step"><h4>Nilai publik Asya &amp; Raissa</h4>
       <div class="formula">A = gᵃ mod p = ${d.A}<br>B = gᵇ mod p = ${d.B}</div>
-      <p>Private Alice a = ${d.a}; private Bob b = ${d.b}. Nilai privat tidak dikirim ke lawan.</p></div>
+      <p>Private Asya a = ${d.a}; private Raissa b = ${d.b}. Nilai privat tidak dikirim ke lawan.</p></div>
     <div class="dh-step"><h4>Shared secret</h4>
-      <div class="formula">s Alice = Bᵃ mod p = ${d.secretAlice}<br>s Bob = Aᵇ mod p = ${d.secretBob}</div>
+      <div class="formula">s Asya = Bᵃ mod p = ${d.secretAlice}<br>s Raissa = Aᵇ mod p = ${d.secretBob}</div>
       <p>Kedua pihak memperoleh rahasia yang sama: <b>${d.secretAlice}</b>.</p></div>`;
 }
 
